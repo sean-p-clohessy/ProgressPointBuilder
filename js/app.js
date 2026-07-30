@@ -15,6 +15,9 @@
   const copyButton = document.querySelector("[data-copy]");
   const form = document.querySelector("#report-form");
   const customPronouns = document.querySelector("#custom-pronouns");
+  const otherContextToggle = document.querySelector("[data-other-toggle]");
+  const otherContextField = document.querySelector("[data-other-context-field]");
+  const otherContextInput = document.querySelector("#other-context");
   let state = window.ParentReportState.collect(form);
   let validationAttempted = false;
   let hasGeneratedReport = false;
@@ -121,10 +124,17 @@
     });
   };
 
+  const setOtherContextVisibility = () => {
+    otherContextField.hidden = !otherContextToggle.checked;
+    otherContextInput.required = otherContextToggle.checked;
+    if (!otherContextToggle.checked) otherContextInput.value = "";
+  };
+
   const clearForm = () => {
     form.reset();
     validationAttempted = false;
     setCustomPronounVisibility();
+    setOtherContextVisibility();
     window.ParentReportUI.clearErrors(form);
     window.ParentReportUI.clearReport();
     hasGeneratedReport = false;
@@ -162,11 +172,13 @@
 
   form.addEventListener("input", () => {
     setCustomPronounVisibility();
+    setOtherContextVisibility();
     update();
     if (hasGeneratedReport) window.ParentReportUI.markReportStale();
   });
   form.addEventListener("change", () => {
     setCustomPronounVisibility();
+    setOtherContextVisibility();
     update();
     if (hasGeneratedReport) window.ParentReportUI.markReportStale();
   });
@@ -295,6 +307,7 @@
     });
     document.querySelector(".optional-details").open = true;
     setCustomPronounVisibility();
+    setOtherContextVisibility();
     update();
     if (hasGeneratedReport) window.ParentReportUI.markReportStale();
     document.querySelector("#learner-name").focus();

@@ -172,11 +172,19 @@
       sentences.contexts.push(fill(bank.contexts["medical-absence"], tokens));
     }
     input.contextTypes
-      .filter((type) => type !== "medical-absence")
+      .filter((type) => type !== "medical-absence" && type !== "other")
       .slice(0, 2)
       .forEach((type) => {
         if (bank.contexts[type]) sentences.contexts.push(fill(bank.contexts[type], tokens));
       });
+    if (
+      input.contextTypes.includes("other") &&
+      input.evidence.otherContext
+    ) {
+      sentences.contexts.unshift(
+        evidenceSentence("Additional context: ", input.evidence.otherContext)
+      );
+    }
 
     if (profile.behaviourConcern) {
       sentences.contrast = pick(bank.behaviour[input.ratings.behaviour], "behaviour-concern");

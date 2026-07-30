@@ -15,7 +15,7 @@
     contextTypes: [],
     evidence: {
       notableStrength: "", recentAchievement: "", mainConcern: "",
-      agreedNextStep: "", additionalContext: ""
+      agreedNextStep: "", otherContext: "", additionalContext: ""
     },
     options: { length: "standard", tone: "balanced", variationIndex: 0 }
   });
@@ -71,6 +71,15 @@
       input.contextTypes = ["medical-absence"];
       const report = ParentReportEngine.generateReport(input).report;
       return report.includes("health-related circumstances") && !report.includes("poor commitment");
+    }],
+    ["Other context is inserted safely", () => {
+      const input = makeInput();
+      input.contextTypes = ["other"];
+      input.evidence.otherContext = "Family responsibilities have affected recent study time";
+      const report = ParentReportEngine.generateReport(input).report;
+      return report.includes(
+        "Additional context: family responsibilities have affected recent study time."
+      );
     }],
     ["Singular they grammar", () => {
       const input = makeInput("needs-support");
