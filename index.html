@@ -214,10 +214,10 @@
                 </div>
               </fieldset>
               <div class="field-grid">
-                <div class="field"><label for="notable-strength">Notable strength</label><input id="notable-strength" type="text" maxlength="160" placeholder="e.g. Strong practical problem-solving"></div>
-                <div class="field"><label for="recent-achievement">Recent achievement</label><input id="recent-achievement" type="text" maxlength="160"></div>
-                <div class="field"><label for="main-concern">Main concern</label><input id="main-concern" type="text" maxlength="160"></div>
-                <div class="field"><label for="agreed-next-step">Agreed next step</label><input id="agreed-next-step" type="text" maxlength="160"></div>
+                <div class="field"><label for="notable-strength">Notable strength</label><input id="notable-strength" type="text" maxlength="160" placeholder="e.g. Strong practical problem-solving" aria-describedby="notable-strength-help"><span class="input-guidance" id="notable-strength-help">Enter a short phrase or complete sentence.</span></div>
+                <div class="field"><label for="recent-achievement">Recent achievement</label><input id="recent-achievement" type="text" maxlength="160" placeholder="e.g. Completed a demanding project" aria-describedby="recent-achievement-help"><span class="input-guidance" id="recent-achievement-help">Describe what the learner achieved.</span></div>
+                <div class="field"><label for="main-concern">Main concern</label><input id="main-concern" type="text" maxlength="160" placeholder="e.g. Written explanations need more detail" aria-describedby="main-concern-help"><span class="input-guidance" id="main-concern-help">Use neutral, parent-facing language.</span></div>
+                <div class="field"><label for="agreed-next-step">Agreed next step</label><input id="agreed-next-step" type="text" maxlength="160" placeholder="e.g. Use feedback on the next assignment" aria-describedby="agreed-next-step-help"><span class="input-guidance" id="agreed-next-step-help">Enter the action exactly as agreed.</span></div>
                 <div class="field full">
                   <label for="context-notes">Additional context or evidence <span class="hint">Maximum 500 characters</span></label>
                   <textarea id="context-notes" maxlength="500" placeholder="Add a recent achievement, specific concern, placement performance, or agreed action."></textarea>
@@ -248,7 +248,10 @@
               <button class="primary-button" type="button" data-review>Generate report</button>
             </div>
           </div>
-          <span class="hint">Generation is deterministic: the same selections always produce the same draft.</span>
+          <div class="determinism-note" role="note">
+            <span class="determinism-icon" aria-hidden="true">↻</span>
+            <span><strong>Consistent by design</strong>The same selections and details always produce the same draft. No AI or external service is used.</span>
+          </div>
         </form>
 
         <aside class="card preview" aria-labelledby="preview-heading">

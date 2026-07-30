@@ -145,6 +145,7 @@ button:disabled { cursor: not-allowed; opacity: .48; }
 .field label, .field-label { font-size: .86rem; font-weight: 750; }
 .required { color: var(--concern); }
 .hint { color: var(--muted); font-size: .76rem; font-weight: 450; }
+.input-guidance { color: var(--muted); font-size: .72rem; }
 input[type="text"], input[type="number"], select, textarea {
   width: 100%; min-height: 44px; border: 1px solid var(--border); border-radius: .7rem;
   padding: .7rem .8rem; background: var(--surface-soft); color: var(--text);
@@ -226,6 +227,18 @@ legend { width: 100%; padding: 0; }
 .check-option span { font-size: .8rem; }
 .actions { display: flex; align-items: center; justify-content: space-between; gap: .75rem; }
 .actions-right { display: flex; gap: .65rem; }
+.determinism-note {
+  display: flex; align-items: center; gap: .7rem; padding: .8rem .9rem;
+  border: 1px solid color-mix(in srgb, var(--teal) 42%, var(--border));
+  border-radius: .8rem; background: color-mix(in srgb, var(--teal) 8%, var(--surface));
+  color: var(--muted); font-size: .78rem;
+}
+.determinism-note strong { display: block; color: var(--text); font-size: .82rem; }
+.determinism-icon {
+  display: grid; width: 2rem; height: 2rem; flex: 0 0 auto; place-items: center;
+  border-radius: 50%; background: var(--teal); color: var(--surface);
+  font-size: 1.05rem; font-weight: 900;
+}
 .phase-note { color: var(--muted); font-size: .75rem; }
 .readiness {
   display: inline-flex; align-items: center; gap: .4rem; color: var(--muted);
