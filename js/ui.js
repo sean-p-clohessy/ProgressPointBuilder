@@ -99,10 +99,10 @@
     output.value = result.report;
     status.className = `status-badge status-${result.profile.overallBand}`;
     status.innerHTML = `<span class="status-dot" aria-hidden="true"></span>${result.profile.overallBand
-      .replace("exceptional", "Exceptional")
-      .replace("on-track", "On track")
-      .replace("needs-support", "Needs support")
-      .replace("cause-concern", "Cause for concern")}`;
+      .replace("exceptional", "Strong Progress")
+      .replace("on-track", "Secure Progress")
+      .replace("needs-support", "Attention Needed")
+      .replace("cause-concern", "Causing Concern")}`;
     wordCount.textContent = `${result.wordCount} ${result.wordCount === 1 ? "word" : "words"}`;
     characterCount.textContent = `${result.characterCount} characters`;
     document.querySelector("[data-edit-status]").hidden = true;

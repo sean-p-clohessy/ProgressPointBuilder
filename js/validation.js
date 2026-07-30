@@ -62,6 +62,15 @@
     ].filter(Boolean).forEach((item) => errors.push(item));
 
     if (
+      state.contextTypes.includes("other") &&
+      !state.evidence.otherContext
+    ) {
+      errors.push(
+        error("other-context", "Clarify the selected “Other” context.")
+      );
+    }
+
+    if (
       state.officialProgressIndicator === "cause-concern" &&
       !state.evidence.mainConcern &&
       !state.evidence.agreedNextStep
