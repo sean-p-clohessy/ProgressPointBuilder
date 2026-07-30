@@ -81,6 +81,52 @@
         "Additional context: family responsibilities have affected recent study time."
       );
     }],
+    ["Additional evidence is retained at every report length", () => {
+      return ["concise", "standard", "detailed"].every((length) => {
+        const input = makeInput();
+        input.options.length = length;
+        input.evidence.additionalContext =
+          "Contributed confidently during the employer workshop";
+        return ParentReportEngine.generateReport(input).report.includes(
+          "Additional evidence: contributed confidently during the employer workshop."
+        );
+      });
+    }],
+    ["Personal circumstances use neutral controlled wording", () => {
+      const input = makeInput();
+      input.contextTypes = ["personal-circumstances"];
+      return ParentReportEngine.generateReport(input).report.includes(
+        "Relevant personal circumstances should be considered"
+      );
+    }],
+    ["Detailed reports retain every selected context", () => {
+      const input = makeInput();
+      input.options.length = "detailed";
+      input.contextTypes = [
+        "medical-absence",
+        "authorised-absence",
+        "late-enrolment",
+        "learning-support"
+      ];
+      const report = ParentReportEngine.generateReport(input).report;
+      return [
+        "health-related circumstances",
+        "authorised",
+        "joined the course late",
+        "learning support"
+      ].every((text) => report.includes(text));
+    }],
+    ["Agreed next steps are retained at every progress level", () => {
+      return ["exceptional", "on-track", "needs-support", "cause-concern"].every(
+        (band) => {
+          const input = makeInput(band);
+          input.evidence.agreedNextStep = "Submit a weekly planning sheet";
+          return ParentReportEngine.generateReport(input).report
+            .toLowerCase()
+            .includes("submit a weekly planning sheet");
+        }
+      );
+    }],
     ["Singular they grammar", () => {
       const input = makeInput("needs-support");
       const report = ParentReportEngine.generateReport(input).report.toLowerCase();
