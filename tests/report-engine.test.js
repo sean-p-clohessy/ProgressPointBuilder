@@ -78,7 +78,7 @@
       input.evidence.otherContext = "Family responsibilities have affected recent study time";
       const report = ParentReportEngine.generateReport(input).report;
       return report.includes(
-        "Additional context: family responsibilities have affected recent study time."
+        "Additional context: Family responsibilities have affected recent study time."
       );
     }],
     ["Additional evidence is retained at every report length", () => {
@@ -88,7 +88,7 @@
         input.evidence.additionalContext =
           "Contributed confidently during the employer workshop";
         return ParentReportEngine.generateReport(input).report.includes(
-          "Additional evidence: contributed confidently during the employer workshop."
+          "Additional evidence: Contributed confidently during the employer workshop."
         );
       });
     }],
@@ -126,6 +126,24 @@
             .includes("submit a weekly planning sheet");
         }
       );
+    }],
+    ["Free-text fragments remain grammatically neutral", () => {
+      const input = makeInput();
+      input.options.length = "detailed";
+      input.evidence.notableStrength = "Good at practical problem-solving";
+      input.evidence.recentAchievement = "Won a regional competition";
+      input.evidence.mainConcern = "May need more support with planning";
+      input.evidence.agreedNextStep = "Weekly planning checklist";
+      const report = ParentReportEngine.generateReport(input).report;
+      return [
+        "Notable strength: Good at practical problem-solving.",
+        "Recent achievement: Won a regional competition.",
+        "Main concern: May need more support with planning.",
+        "Agreed next step: Weekly planning checklist."
+      ].every((text) => report.includes(text)) &&
+        !report.includes("achievement was won") &&
+        !report.includes("concern is that may") &&
+        !report.includes("step is to weekly");
     }],
     ["Singular they grammar", () => {
       const input = makeInput("needs-support");

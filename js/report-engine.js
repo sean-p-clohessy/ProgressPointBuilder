@@ -81,6 +81,12 @@
     return ensureSentence(`${prefix}${clean.charAt(0).toLowerCase()}${clean.slice(1)}`);
   };
 
+  const labelledEvidence = (label, evidence) => {
+    if (!evidence) return "";
+    const clean = evidence.trim().replace(/[.!?]+$/, "");
+    return ensureSentence(`${label}: ${clean}`);
+  };
+
   const analyseProfile = (input) => {
     const entries = Object.entries(input.ratings);
     const bestScore = Math.min(...entries.map(([, band]) => score[band]));
@@ -183,7 +189,7 @@
       input.evidence.otherContext
     ) {
       sentences.contexts.unshift(
-        evidenceSentence("Additional context: ", input.evidence.otherContext)
+        labelledEvidence("Additional context", input.evidence.otherContext)
       );
     }
 
@@ -202,30 +208,28 @@
     }
 
     if (input.evidence.notableStrength) {
-      sentences.evidence.push(evidenceSentence("A particular strength is ", input.evidence.notableStrength));
+      sentences.evidence.push(labelledEvidence("Notable strength", input.evidence.notableStrength));
     }
     if (input.evidence.recentAchievement) {
-      sentences.evidence.push(evidenceSentence("A recent achievement was ", input.evidence.recentAchievement));
+      sentences.evidence.push(labelledEvidence("Recent achievement", input.evidence.recentAchievement));
     }
     if (input.evidence.mainConcern) {
-      sentences.concern = evidenceSentence("A key concern is that ", input.evidence.mainConcern);
+      sentences.concern = labelledEvidence("Main concern", input.evidence.mainConcern);
     }
     if (input.evidence.additionalContext) {
-      sentences.additionalEvidence = evidenceSentence(
-        "Additional evidence: ",
+      sentences.additionalEvidence = labelledEvidence(
+        "Additional evidence",
         input.evidence.additionalContext
       );
     }
 
-    const action = input.evidence.agreedNextStep
-      ? input.evidence.agreedNextStep.trim().replace(/[.!?]+$/, "").replace(/^to\s+/i, "")
-      : defaultAction(input);
+    const action = defaultAction(input);
     tokens.action = action.charAt(0).toLowerCase() + action.slice(1);
-    if (
-      input.evidence.agreedNextStep &&
-      score[input.officialProgressIndicator] <= 2
-    ) {
-      sentences.agreedNextStep = evidenceSentence("An agreed next step is to ", action);
+    if (input.evidence.agreedNextStep) {
+      sentences.agreedNextStep = labelledEvidence(
+        "Agreed next step",
+        input.evidence.agreedNextStep
+      );
     }
     sentences.conclusion = pick(
       bank.conclusions[input.officialProgressIndicator],
