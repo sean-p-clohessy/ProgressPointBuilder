@@ -122,6 +122,7 @@
     contexts: {
       "medical-absence": "Attendance has been affected by health-related circumstances, and this context should be considered when reviewing the current figure.",
       "authorised-absence": "Some absence has been authorised and should be considered alongside the current attendance figure.",
+      "personal-circumstances": "Relevant personal circumstances should be considered when reviewing {possessive} progress during this reporting period.",
       "late-enrolment": "{name} joined the course late and is continuing to settle in and catch up with missed learning.",
       "improved-attendance": "It is positive that attendance has improved recently.",
       "improved-punctuality": "Recent improvement in punctuality is encouraging.",

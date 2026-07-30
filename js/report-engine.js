@@ -145,8 +145,10 @@
       participation: "",
       contexts: [],
       evidence: [],
+      additionalEvidence: "",
       contrast: "",
       concern: "",
+      agreedNextStep: "",
       conclusion: ""
     };
 
@@ -173,7 +175,6 @@
     }
     input.contextTypes
       .filter((type) => type !== "medical-absence" && type !== "other")
-      .slice(0, 2)
       .forEach((type) => {
         if (bank.contexts[type]) sentences.contexts.push(fill(bank.contexts[type], tokens));
       });
@@ -209,11 +210,23 @@
     if (input.evidence.mainConcern) {
       sentences.concern = evidenceSentence("A key concern is that ", input.evidence.mainConcern);
     }
+    if (input.evidence.additionalContext) {
+      sentences.additionalEvidence = evidenceSentence(
+        "Additional evidence: ",
+        input.evidence.additionalContext
+      );
+    }
 
     const action = input.evidence.agreedNextStep
       ? input.evidence.agreedNextStep.trim().replace(/[.!?]+$/, "").replace(/^to\s+/i, "")
       : defaultAction(input);
     tokens.action = action.charAt(0).toLowerCase() + action.slice(1);
+    if (
+      input.evidence.agreedNextStep &&
+      score[input.officialProgressIndicator] <= 2
+    ) {
+      sentences.agreedNextStep = evidenceSentence("An agreed next step is to ", action);
+    }
     sentences.conclusion = pick(
       bank.conclusions[input.officialProgressIndicator],
       "conclusion"
@@ -228,6 +241,8 @@
         sentences.strength,
         sentences.contrast,
         sentences.concern,
+        sentences.additionalEvidence,
+        sentences.agreedNextStep,
         sentences.conclusion
       ];
     }
@@ -236,10 +251,12 @@
         sentences.opening,
         ...sentences.details,
         ...sentences.evidence,
+        sentences.additionalEvidence,
         sentences.participation,
         ...sentences.contexts,
         sentences.contrast,
         sentences.concern,
+        sentences.agreedNextStep,
         sentences.conclusion
       ];
     }
@@ -247,10 +264,12 @@
       sentences.opening,
       sentences.strength,
       sentences.evidence[0],
+      sentences.additionalEvidence,
       sentences.participation,
       sentences.contexts[0],
       sentences.contrast,
       sentences.concern,
+      sentences.agreedNextStep,
       sentences.conclusion
     ];
   };
