@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Create clear, balanced parent report drafts locally in your browser.">
+  <title>Parent Report Builder</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div class="app-shell">
+    <main class="workspace" id="main-content">
+      <header class="page-header" id="report-builder">
+        <div>
+          <p class="eyebrow">Progress point workspace</p>
+          <h1>Parent Report Builder</h1>
+          <p class="intro">Capture the whole picture, including mixed strengths and concerns. Check the form for missing details and unusual combinations before generating a report.</p>
+          <p class="privacy-inline">Your data is processed locally in your browser and is not stored by this application.</p>
+        </div>
+        <div class="header-actions">
+          <button class="header-theme-toggle" type="button" data-theme-toggle aria-pressed="false">
+            <span class="theme-symbol" aria-hidden="true">◐</span>
+            <span data-theme-label>Light mode</span>
+            <span class="toggle-track" aria-hidden="true"><span class="toggle-dot"></span></span>
+          </button>
+          <div class="demo-controls">
+            <label class="visually-hidden" for="demo-profile">Choose a demonstration profile</label>
+            <select class="demo-select" id="demo-profile" data-demo-select>
+              <option value="am">Demo — AM</option>
+              <option value="jc">Demo — JC</option>
+              <option value="sr">Demo — SR</option>
+            </select>
+            <button class="demo-button" type="button" data-demo-load>Load demo</button>
+          </div>
+        </div>
+      </header>
+
+      <div class="content-grid">
+        <form class="form-stack" id="report-form" autocomplete="off">
+          <section class="card" aria-labelledby="learner-heading">
+            <div class="card-header">
+              <h3 id="learner-heading">1. Learner information</h3>
+              <p>Start with the details needed to personalise the report.</p>
+            </div>
+            <div class="card-body">
+              <div class="field-grid">
+                <div class="field full">
+                  <label for="learner-name">Learner name <span class="required" aria-hidden="true">*</span></label>
+                  <input id="learner-name" name="learnerName" type="text" placeholder="e.g. Alex" maxlength="80" required>
+                </div>
+                <div class="field" hidden>
+                  <label for="course">Course or group</label>
+                  <input id="course" name="course" type="text" placeholder="e.g. Level 3 Digital" maxlength="100">
+                </div>
+                <fieldset class="field full">
+                  <legend class="field-label">Pronouns <span class="required" aria-hidden="true">*</span></legend>
+                  <div class="pronoun-options">
+                    <label class="choice-pill"><input type="radio" name="pronouns" value="he" required><span>He / Him</span></label>
+                    <label class="choice-pill"><input type="radio" name="pronouns" value="she"><span>She / Her</span></label>
+                    <label class="choice-pill"><input type="radio" name="pronouns" value="they"><span>They / Them</span></label>
+                    <label class="choice-pill"><input type="radio" name="pronouns" value="name"><span>Use name only</span></label>
+                    <label class="choice-pill"><input type="radio" name="pronouns" value="custom"><span>Custom</span></label>
+                  </div>
+                  <div class="custom-pronouns" id="custom-pronouns" hidden>
+                    <div class="field-grid">
+                      <div class="field"><label for="subject-pronoun">Subject <span class="hint">e.g. ze</span></label><input id="subject-pronoun" type="text" maxlength="20"></div>
+                      <div class="field"><label for="object-pronoun">Object <span class="hint">e.g. hir</span></label><input id="object-pronoun" type="text" maxlength="20"></div>
+                      <div class="field"><label for="possessive-pronoun">Possessive <span class="hint">e.g. hir</span></label><input id="possessive-pronoun" type="text" maxlength="20"></div>
+                      <div class="field"><label for="reflexive-pronoun">Reflexive <span class="hint">e.g. hirself</span></label><input id="reflexive-pronoun" type="text" maxlength="24"></div>
+                    </div>
+                  </div>
+                </fieldset>
+                <fieldset class="field full">
+                  <legend class="field-label">Official progress indicator <span class="required" aria-hidden="true">*</span></legend>
+                  <div class="rating-options">
+                    <label class="rating-option exceptional"><input type="radio" name="official-progress" value="exceptional" required><span class="rating-content"><strong>1 · Exceptional</strong><small>Performing above the expected level.</small></span></label>
+                    <label class="rating-option on-track"><input type="radio" name="official-progress" value="on-track"><span class="rating-content"><strong>2 · On track</strong><small>Making the expected progress.</small></span></label>
+                    <label class="rating-option needs-support"><input type="radio" name="official-progress" value="needs-support"><span class="rating-content"><strong>3 · Needs support</strong><small>Below expectations; action is needed.</small></span></label>
+                    <label class="rating-option cause-concern"><input type="radio" name="official-progress" value="cause-concern"><span class="rating-content"><strong>4 · Cause for concern</strong><small>Significantly behind the expected point.</small></span></label>
+                  </div>
+                </fieldset>
+                <div class="field" hidden>
+                  <label for="reporting-period">Reporting period</label>
+                  <input id="reporting-period" name="reportingPeriod" type="text" placeholder="e.g. Autumn Term" maxlength="80">
+                </div>
+                <div class="field" hidden>
+                  <label for="lecturer-name">Lecturer name <span class="hint">metadata only</span></label>
+                  <input id="lecturer-name" name="lecturerName" type="text" maxlength="80">
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="card" aria-labelledby="ratings-heading">
+            <div class="card-header">
+              <h3 id="ratings-heading">2. Performance categories</h3>
+              <p>Three quick judgements focused on the learner’s approach to learning.</p>
+            </div>
+            <div class="card-body rating-groups">
+              <fieldset class="rating-group" hidden>
+                <legend class="rating-title"><strong>Attendance</strong><span>Optional percentage below</span></legend>
+                <div class="rating-options">
+                  <label class="rating-option exceptional"><input type="radio" name="attendance" value="exceptional" required><span class="rating-content"><strong>Exceptional</strong><small>Consistently attends scheduled learning.</small></span></label>
+                  <label class="rating-option on-track"><input type="radio" name="attendance" value="on-track"><span class="rating-content"><strong>On track</strong><small>Generally secure and supports progress.</small></span></label>
+                  <label class="rating-option needs-support"><input type="radio" name="attendance" value="needs-support"><span class="rating-content"><strong>Needs support</strong><small>Inconsistency is beginning to affect progress.</small></span></label>
+                  <label class="rating-option cause-concern"><input type="radio" name="attendance" value="cause-concern"><span class="rating-content"><strong>Cause for concern</strong><small>Significantly limits participation.</small></span></label>
+                </div>
+              </fieldset>
+              <fieldset class="rating-group" hidden>
+                <legend class="rating-title"><strong>Punctuality</strong><span>Readiness to learn</span></legend>
+                <div class="rating-options">
+                  <label class="rating-option exceptional"><input type="radio" name="punctuality" value="exceptional" required><span class="rating-content"><strong>Exceptional</strong><small>Consistently on time and ready to learn.</small></span></label>
+                  <label class="rating-option on-track"><input type="radio" name="punctuality" value="on-track"><span class="rating-content"><strong>On track</strong><small>Usually punctual with occasional lateness.</small></span></label>
+                  <label class="rating-option needs-support"><input type="radio" name="punctuality" value="needs-support"><span class="rating-content"><strong>Needs support</strong><small>Regular lateness affects learning time.</small></span></label>
+                  <label class="rating-option cause-concern"><input type="radio" name="punctuality" value="cause-concern"><span class="rating-content"><strong>Cause for concern</strong><small>Persistent lateness affects participation.</small></span></label>
+                </div>
+              </fieldset>
+              <fieldset class="rating-group">
+                <legend class="rating-title"><strong>Behaviour and attitude</strong><span>Conduct and approach</span></legend>
+                <div class="rating-options">
+                  <label class="rating-option exceptional"><input type="radio" name="behaviour" value="exceptional" required><span class="rating-content"><strong>Exceptional</strong><small>Mature, respectful and highly positive.</small></span></label>
+                  <label class="rating-option on-track"><input type="radio" name="behaviour" value="on-track"><span class="rating-content"><strong>On track</strong><small>Appropriate behaviour and positive approach.</small></span></label>
+                  <label class="rating-option needs-support"><input type="radio" name="behaviour" value="needs-support"><span class="rating-content"><strong>Needs support</strong><small>Can be inconsistent and needs reminders.</small></span></label>
+                  <label class="rating-option cause-concern"><input type="radio" name="behaviour" value="cause-concern"><span class="rating-content"><strong>Cause for concern</strong><small>Significantly affects learning or others.</small></span></label>
+                </div>
+              </fieldset>
+              <fieldset class="rating-group">
+                <legend class="rating-title"><strong>Engagement in learning</strong><span>Participation and interest</span></legend>
+                <div class="rating-options">
+                  <label class="rating-option exceptional"><input type="radio" name="engagement" value="exceptional" required><span class="rating-content"><strong>Exceptional</strong><small>Active, thoughtful and enthusiastic.</small></span></label>
+                  <label class="rating-option on-track"><input type="radio" name="engagement" value="on-track"><span class="rating-content"><strong>On track</strong><small>Engages and participates appropriately.</small></span></label>
+                  <label class="rating-option needs-support"><input type="radio" name="engagement" value="needs-support"><span class="rating-content"><strong>Needs support</strong><small>Varies and needs regular encouragement.</small></span></label>
+                  <label class="rating-option cause-concern"><input type="radio" name="engagement" value="cause-concern"><span class="rating-content"><strong>Cause for concern</strong><small>Makes limited use of learning time.</small></span></label>
+                </div>
+              </fieldset>
+              <fieldset class="rating-group">
+                <legend class="rating-title"><strong>Effort and application</strong><span>Consistency of effort</span></legend>
+                <div class="rating-options">
+                  <label class="rating-option exceptional"><input type="radio" name="effort" value="exceptional" required><span class="rating-content"><strong>Exceptional</strong><small>Strong effort that exceeds expectations.</small></span></label>
+                  <label class="rating-option on-track"><input type="radio" name="effort" value="on-track"><span class="rating-content"><strong>On track</strong><small>Appropriate effort and response to tasks.</small></span></label>
+                  <label class="rating-option needs-support"><input type="radio" name="effort" value="needs-support"><span class="rating-content"><strong>Needs support</strong><small>Inconsistent; greater application is needed.</small></span></label>
+                  <label class="rating-option cause-concern"><input type="radio" name="effort" value="cause-concern"><span class="rating-content"><strong>Cause for concern</strong><small>Insufficient to support successful progress.</small></span></label>
+                </div>
+              </fieldset>
+              <fieldset class="rating-group" hidden>
+                <legend class="rating-title"><strong>Progress and achievement</strong><span>Current academic outcomes</span></legend>
+                <div class="rating-options">
+                  <label class="rating-option exceptional"><input type="radio" name="progress" value="exceptional" required><span class="rating-content"><strong>Exceptional</strong><small>Above expectations with strong outcomes.</small></span></label>
+                  <label class="rating-option on-track"><input type="radio" name="progress" value="on-track"><span class="rating-content"><strong>On track</strong><small>Expected progress towards the target.</small></span></label>
+                  <label class="rating-option needs-support"><input type="radio" name="progress" value="needs-support"><span class="rating-content"><strong>Needs support</strong><small>Below expectations; action is needed.</small></span></label>
+                  <label class="rating-option cause-concern"><input type="radio" name="progress" value="cause-concern"><span class="rating-content"><strong>Cause for concern</strong><small>Behind target and achievement is at risk.</small></span></label>
+                </div>
+              </fieldset>
+              <fieldset class="rating-group" hidden>
+                <legend class="rating-title"><strong>Quality and completion of work</strong><span>Standard and deadlines</span></legend>
+                <div class="rating-options">
+                  <label class="rating-option exceptional"><input type="radio" name="workQuality" value="exceptional" required><span class="rating-content"><strong>Exceptional</strong><small>Consistently strong and complete work.</small></span></label>
+                  <label class="rating-option on-track"><input type="radio" name="workQuality" value="on-track"><span class="rating-content"><strong>On track</strong><small>Generally complete and at expected standard.</small></span></label>
+                  <label class="rating-option needs-support"><input type="radio" name="workQuality" value="needs-support"><span class="rating-content"><strong>Needs support</strong><small>Some work is late, incomplete or below standard.</small></span></label>
+                  <label class="rating-option cause-concern"><input type="radio" name="workQuality" value="cause-concern"><span class="rating-content"><strong>Cause for concern</strong><small>Significant work is missing or unsuitable.</small></span></label>
+                </div>
+              </fieldset>
+              <fieldset class="rating-group" hidden>
+                <legend class="rating-title"><strong>Independence and use of support</strong><span>Guidance and feedback</span></legend>
+                <div class="rating-options">
+                  <label class="rating-option exceptional"><input type="radio" name="independence" value="exceptional" required><span class="rating-content"><strong>Exceptional</strong><small>Confidently independent; seeks help well.</small></span></label>
+                  <label class="rating-option on-track"><input type="radio" name="independence" value="on-track"><span class="rating-content"><strong>On track</strong><small>Suitable independence and uses guidance.</small></span></label>
+                  <label class="rating-option needs-support"><input type="radio" name="independence" value="needs-support"><span class="rating-content"><strong>Needs support</strong><small>Needs regular guidance or misses feedback.</small></span></label>
+                  <label class="rating-option cause-concern"><input type="radio" name="independence" value="cause-concern"><span class="rating-content"><strong>Cause for concern</strong><small>Limited use of available support.</small></span></label>
+                </div>
+              </fieldset>
+              <div class="field-grid optional-percentages" hidden>
+                <p class="field-label full">Optional framework figures <span class="hint">Only add these when useful</span></p>
+                <div class="field"><label for="attendance-percentage">Attendance percentage <span class="hint">optional</span></label><input id="attendance-percentage" type="number" min="0" max="100" step="0.1" inputmode="decimal" placeholder="0–100"></div>
+                <div class="field"><label for="punctuality-percentage">Punctuality percentage <span class="hint">optional</span></label><input id="punctuality-percentage" type="number" min="0" max="100" step="0.1" inputmode="decimal" placeholder="0–100"></div>
+              </div>
+            </div>
+          </section>
+
+          <section class="card" aria-labelledby="context-heading">
+            <div class="card-header"><h3 id="context-heading">3. Optional supporting details</h3><p>Skip this section unless a detail would make the draft more useful.</p></div>
+            <div class="card-body">
+              <details class="optional-details">
+                <summary>Add context with quick checkboxes, evidence or a next step</summary>
+                <div class="optional-details-content">
+              <div class="field-grid optional-percentages">
+                <p class="field-label full">Framework figures <span class="hint">Optional</span></p>
+                <div class="field"><label for="attendance-percentage-optional">Attendance percentage</label><input id="attendance-percentage-optional" data-percentage-proxy="attendance-percentage" type="number" min="0" max="100" step="0.1" inputmode="decimal" placeholder="0–100"></div>
+                <div class="field"><label for="punctuality-percentage-optional">Punctuality percentage</label><input id="punctuality-percentage-optional" data-percentage-proxy="punctuality-percentage" type="number" min="0" max="100" step="0.1" inputmode="decimal" placeholder="0–100"></div>
+              </div>
+              <fieldset>
+                <legend class="field-label">Context types <span class="hint">Select all that apply</span></legend>
+                <div class="context-options">
+                  <label class="check-option"><input type="checkbox" name="context" value="medical-absence"><span>Medical appointments or health-related absence</span></label>
+                  <label class="check-option"><input type="checkbox" name="context" value="authorised-absence"><span>Authorised absence</span></label>
+                  <label class="check-option"><input type="checkbox" name="context" value="personal-circumstances"><span>Personal circumstances</span></label>
+                  <label class="check-option"><input type="checkbox" name="context" value="late-enrolment"><span>Late enrolment</span></label>
+                  <label class="check-option"><input type="checkbox" name="context" value="improved-attendance"><span>Recently improved attendance</span></label>
+                  <label class="check-option"><input type="checkbox" name="context" value="improved-punctuality"><span>Recently improved punctuality</span></label>
+                  <label class="check-option"><input type="checkbox" name="context" value="behaviour-intervention"><span>Behaviour intervention in place</span></label>
+                  <label class="check-option"><input type="checkbox" name="context" value="learning-support"><span>Learning support in place</span></label>
+                  <label class="check-option"><input type="checkbox" name="context" value="placement"><span>Placement or work experience</span></label>
+                  <label class="check-option"><input type="checkbox" name="context" value="settling"><span>Difficulty settling into the course</span></label>
+                  <label class="check-option"><input type="checkbox" name="context" value="catch-up"><span>Missed work requiring catch-up</span></label>
+                  <label class="check-option"><input type="checkbox" name="context" value="strong-practical-performance"><span>Strong practical performance</span></label>
+                  <label class="check-option"><input type="checkbox" name="context" value="strong-written-performance"><span>Strong written performance</span></label>
+                  <label class="check-option"><input type="checkbox" name="context" value="university"><span>Working towards university progression</span></label>
+                  <label class="check-option"><input type="checkbox" name="context" value="other"><span>Other</span></label>
+                </div>
+              </fieldset>
+              <div class="field-grid">
+                <div class="field"><label for="notable-strength">Notable strength</label><input id="notable-strength" type="text" maxlength="160" placeholder="e.g. Strong practical problem-solving"></div>
+                <div class="field"><label for="recent-achievement">Recent achievement</label><input id="recent-achievement" type="text" maxlength="160"></div>
+                <div class="field"><label for="main-concern">Main concern</label><input id="main-concern" type="text" maxlength="160"></div>
+                <div class="field"><label for="agreed-next-step">Agreed next step</label><input id="agreed-next-step" type="text" maxlength="160"></div>
+                <div class="field full">
+                  <label for="context-notes">Additional context or evidence <span class="hint">Maximum 500 characters</span></label>
+                  <textarea id="context-notes" maxlength="500" placeholder="Add a recent achievement, specific concern, placement performance, or agreed action."></textarea>
+                </div>
+                <div class="field">
+                  <label for="report-length">Report length</label>
+                  <select id="report-length">
+                    <option value="concise">Concise</option>
+                    <option value="standard">Standard</option>
+                    <option value="detailed" selected>Detailed — recommended</option>
+                  </select>
+                </div>
+              </div>
+                </div>
+              </details>
+            </div>
+          </section>
+
+          <section class="review-panel" id="review-panel" tabindex="-1" aria-live="polite" hidden>
+            <h3 data-review-heading>Selections to review</h3>
+            <ul data-review-list></ul>
+          </section>
+
+          <div class="actions">
+            <span class="readiness" data-readiness data-ready="false">6 required items remaining</span>
+            <div class="actions-right">
+              <button class="secondary-button" type="button" data-reset>Clear form</button>
+              <button class="primary-button" type="button" data-review>Generate report</button>
+            </div>
+          </div>
+          <span class="hint">Generation is deterministic: the same selections always produce the same draft.</span>
+        </form>
+
+        <aside class="card preview" aria-labelledby="preview-heading">
+          <div class="card-header preview-header">
+          <div><h3 id="preview-heading" tabindex="-1">Report preview</h3><p>Your generated draft will appear here.</p></div>
+            <span class="status-badge" data-report-status><span class="status-dot" aria-hidden="true"></span>Not generated</span>
+          </div>
+          <div class="card-body">
+            <div class="empty-preview" data-empty-preview>
+              <div>
+                <div class="empty-icon" aria-hidden="true">✦</div>
+                <h4>Ready when you are</h4>
+                <p>Complete the required learner details and performance ratings to create a balanced draft.</p>
+              </div>
+            </div>
+            <label class="visually-hidden" for="report-editor">Generated report draft</label>
+            <textarea class="report-output" id="report-editor" data-report-output aria-describedby="draft-editor-help" hidden></textarea>
+            <span class="visually-hidden" id="draft-editor-help">Edit and personalise this draft before sharing it.</span>
+            <div class="draft-warning" role="note"><strong>Draft reminder</strong>This is a draft. Please review, proofread and personalise the report before sharing it with parents.</div>
+            <div class="counts" aria-live="polite">
+              <span class="edit-indicator" data-edit-status hidden>Edited</span>
+              <span data-word-count>0 words</span>
+              <span data-character-count>0 characters</span>
+            </div>
+            <div class="preview-actions">
+              <button class="secondary-button" type="button" data-restore disabled>Restore draft</button>
+              <button class="secondary-button" type="button" data-regenerate disabled>Regenerate wording</button>
+              <button class="secondary-button" type="button" data-clear-report disabled>Clear report</button>
+              <button class="primary-button" type="button" data-copy disabled>Copy report</button>
+            </div>
+          </div>
+        </aside>
+      </div>
+
+      <section class="card help-card" id="help" aria-labelledby="help-heading">
+        <div class="card-header"><h3 id="help-heading">Help &amp; guidance</h3><p>Use the ratings as evidence, then apply your professional judgement.</p></div>
+        <div class="card-body guidance-grid">
+          <div class="guidance-item"><h4>Mixed ratings are valid</h4><p>A learner may show excellent engagement and effort while still needing progress support. The report describes that contrast rather than averaging it away.</p></div>
+          <div class="guidance-item"><h4>Add useful context</h4><p>Include relevant circumstances and specific evidence where it improves accuracy. Avoid unnecessary sensitive detail.</p></div>
+          <div class="guidance-item"><h4>You remain responsible</h4><p>Every generated report will be a draft. Review its accuracy, tone, grammar and personalisation before sharing.</p></div>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script src="js/state.js"></script>
+  <script src="js/validation.js"></script>
+  <script src="js/phrase-bank.js"></script>
+  <script src="js/report-engine.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
