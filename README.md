@@ -8,9 +8,19 @@ Parent Report Builder is a standalone, browser-based tool for lecturers drafting
 
 Phase 4 provides a streamlined 90-second workflow and a complete report editor. Generated drafts can be personalised, copied, restored, cleared, or deterministically regenerated without changing their judgement. Detailed is the default because it most closely reflects the exemplar Progress Point comments.
 
-## Screenshot
+## Live application
 
-Screenshot placeholder — add desktop and mobile captures after Phase 1 visual sign-off.
+[Open Parent Report Builder](https://sean-p-clohessy.github.io/ProgressPointBuilder/)
+
+## Screenshots
+
+### Desktop
+
+![Parent Report Builder desktop view with a completed learner profile and generated report](docs/images/parent-report-builder-desktop.png)
+
+### Mobile
+
+<img src="docs/images/parent-report-builder-mobile.png" width="390" alt="Parent Report Builder responsive mobile view">
 
 ## Run locally
 
@@ -39,7 +49,9 @@ Your data is processed locally in your browser and is not stored by this applica
 
 ## Report-generation approach
 
-The planned engine will build a learner profile from the official progress indicator, individual category ratings, percentages, and optional structured context. It will select controlled phrases with deterministic rules and a variation index. Ratings will not be averaged, and the official progress indicator will remain authoritative.
+The report engine builds a learner profile from the official progress indicator, individual category ratings, percentages, and optional structured context. It selects controlled phrases using deterministic rules and a variation index. Ratings are not averaged, and the official progress indicator remains authoritative.
+
+The same inputs and variation index always produce the same draft. No AI or external service is used, and lecturer-entered language is placed into fixed templates rather than interpreted or rewritten.
 
 See `docs/REPORT_LOGIC.md` and `docs/PHRASE_BANK_GUIDE.md`.
 
@@ -49,4 +61,4 @@ See `docs/REPORT_LOGIC.md` and `docs/PHRASE_BANK_GUIDE.md`.
 
 ## Testing
 
-Open `tests/report-engine.test.html` to run the dependency-free report-engine test harness. Also review `docs/QA_CHECKLIST.md` and test the page at the listed viewport sizes.
+Open `tests/report-engine.test.html` to run the dependency-free report-engine test harness. The current suite contains 19 automated checks. Also review `docs/QA_CHECKLIST.md` and test the page at the listed viewport sizes.
