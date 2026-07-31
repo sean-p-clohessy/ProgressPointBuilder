@@ -133,7 +133,8 @@
       "catch-up": "Missed work now needs to be completed so that important gaps do not remain.",
       "strong-practical-performance": "{possessiveCap} practical performance is a particular strength.",
       "strong-written-performance": "{possessiveCap} written work is a particular strength.",
-      university: "{subjectCap} {is} working towards university progression and should keep this longer-term goal in focus."
+      university: "{subjectCap} {is} working towards university progression and should keep this longer-term goal in focus.",
+      "frequent-phone-use": "Frequent phone use during lessons is affecting {possessive} focus and reducing productive learning time."
     },
     conclusions: {
       exceptional: [

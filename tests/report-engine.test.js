@@ -99,6 +99,14 @@
         "Relevant personal circumstances should be considered"
       );
     }],
+    ["Frequent phone use is described as a learning concern", () => {
+      const input = makeInput();
+      input.contextTypes = ["frequent-phone-use"];
+      const report = ParentReportEngine.generateReport(input).report;
+      return report.includes(
+        "Frequent phone use during lessons is affecting their focus and reducing productive learning time."
+      );
+    }],
     ["Detailed reports retain every selected context", () => {
       const input = makeInput();
       input.options.length = "detailed";
