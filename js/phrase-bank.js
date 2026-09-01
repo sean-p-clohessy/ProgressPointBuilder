@@ -126,6 +126,8 @@
       "late-enrolment": "{name} joined the course late and is continuing to settle in and catch up with missed learning.",
       "improved-attendance": "It is positive that attendance has improved recently.",
       "improved-punctuality": "Recent improvement in punctuality is encouraging.",
+      "strong-attendance": "{possessiveCap} strong attendance is supporting consistent participation and progress.",
+      "strong-punctuality": "{possessiveCap} strong punctuality is helping {object} make full use of learning time.",
       "behaviour-intervention": "A behaviour intervention is in place to support more consistent choices.",
       "learning-support": "{subjectCap} {has} access to learning support and should continue to use it purposefully.",
       placement: "Placement or work-experience activity provides useful evidence of {possessive} developing skills.",
@@ -134,6 +136,8 @@
       "strong-practical-performance": "{possessiveCap} practical performance is a particular strength.",
       "strong-written-performance": "{possessiveCap} written work is a particular strength.",
       university: "{subjectCap} {is} working towards university progression and should keep this longer-term goal in focus.",
+      "maths-support": "{subjectCap} {is} currently finding Maths challenging and should continue to use the available support.",
+      "english-support": "{subjectCap} {is} currently finding English challenging and should continue to use the available support.",
       "frequent-phone-use": "Frequent phone use during lessons is affecting {possessive} focus and reducing productive learning time."
     },
     conclusions: {

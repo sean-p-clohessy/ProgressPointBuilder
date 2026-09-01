@@ -1,6 +1,6 @@
-# Parent Report Builder
+# Progress Tracking Builder
 
-Parent Report Builder is a standalone, browser-based tool for lecturers drafting concise, professional progress-point comments for parents. It is designed to work locally, without AI, external APIs, accounts, analytics, or storage of learner information.
+Progress Tracking Builder is a standalone, browser-based tool for lecturers drafting concise, professional progress-point comments for parents. It is designed to work locally, without AI, external APIs, accounts, analytics, or storage of learner information.
 
 > Version 0.4.0 — Phase 4 report editor
 
@@ -10,17 +10,17 @@ Phase 4 provides a streamlined 90-second workflow and a complete report editor. 
 
 ## Live application
 
-[Open Parent Report Builder](https://sean-p-clohessy.github.io/ProgressPointBuilder/)
+[Open Progress Tracking Builder](https://sean-p-clohessy.github.io/ProgressPointBuilder/)
 
 ## Screenshots
 
 ### Desktop
 
-![Parent Report Builder desktop view with a completed learner profile and generated report](docs/images/parent-report-builder-desktop.png)
+![Progress Tracking Builder desktop view with a completed learner profile and generated report](docs/images/parent-report-builder-desktop.png)
 
 ### Mobile
 
-<img src="docs/images/parent-report-builder-mobile.png" width="390" alt="Parent Report Builder responsive mobile view">
+<img src="docs/images/parent-report-builder-mobile.png" width="390" alt="Progress Tracking Builder responsive mobile view">
 
 ## Run locally
 
@@ -61,4 +61,4 @@ See `docs/REPORT_LOGIC.md` and `docs/PHRASE_BANK_GUIDE.md`.
 
 ## Testing
 
-Open `tests/report-engine.test.html` to run the dependency-free report-engine test harness. The current suite contains 19 automated checks. Also review `docs/QA_CHECKLIST.md` and test the page at the listed viewport sizes.
+Open `tests/report-engine.test.html` to run the dependency-free report-engine test harness. The current suite contains 20 automated checks. Also review `docs/QA_CHECKLIST.md` and test the page at the listed viewport sizes.
