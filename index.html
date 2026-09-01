@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Create clear, balanced parent report drafts locally in your browser.">
-  <title>Parent Report Builder</title>
+  <title>Progress Tracking Builder</title>
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -14,7 +14,7 @@
       <header class="page-header" id="report-builder">
         <div>
           <p class="eyebrow">Progress point workspace</p>
-          <h1>Parent Report Builder</h1>
+          <h1>Progress Tracking Builder</h1>
           <p class="intro">Capture the whole picture, including mixed strengths and concerns. Check the form for missing details and unusual combinations before generating a report.</p>
           <p class="privacy-inline">Your data is processed locally in your browser and is not stored by this application.</p>
         </div>
@@ -191,23 +191,37 @@
               </div>
               <fieldset>
                 <legend class="field-label">Context types <span class="hint">Select all that apply</span></legend>
-                <div class="context-options">
-                  <label class="check-option"><input type="checkbox" name="context" value="medical-absence"><span>Medical appointments or health-related absence</span></label>
-                  <label class="check-option"><input type="checkbox" name="context" value="authorised-absence"><span>Authorised absence</span></label>
-                  <label class="check-option"><input type="checkbox" name="context" value="personal-circumstances"><span>Personal circumstances</span></label>
-                  <label class="check-option"><input type="checkbox" name="context" value="late-enrolment"><span>Late enrolment</span></label>
-                  <label class="check-option"><input type="checkbox" name="context" value="improved-attendance"><span>Recently improved attendance</span></label>
-                  <label class="check-option"><input type="checkbox" name="context" value="improved-punctuality"><span>Recently improved punctuality</span></label>
-                  <label class="check-option"><input type="checkbox" name="context" value="behaviour-intervention"><span>Behaviour intervention in place</span></label>
-                  <label class="check-option"><input type="checkbox" name="context" value="learning-support"><span>Learning support in place</span></label>
-                  <label class="check-option"><input type="checkbox" name="context" value="placement"><span>Placement or work experience</span></label>
-                  <label class="check-option"><input type="checkbox" name="context" value="settling"><span>Difficulty settling into the course</span></label>
-                  <label class="check-option"><input type="checkbox" name="context" value="catch-up"><span>Missed work requiring catch-up</span></label>
-                  <label class="check-option"><input type="checkbox" name="context" value="strong-practical-performance"><span>Strong practical performance</span></label>
-                  <label class="check-option"><input type="checkbox" name="context" value="strong-written-performance"><span>Strong written performance</span></label>
-                  <label class="check-option"><input type="checkbox" name="context" value="university"><span>Working towards university progression</span></label>
-                  <label class="check-option"><input type="checkbox" name="context" value="other" data-other-toggle><span>Other</span></label>
-                  <label class="check-option"><input type="checkbox" name="context" value="frequent-phone-use"><span>Frequent phone use during lessons</span></label>
+                <div class="context-groups">
+                  <section class="context-group" aria-labelledby="positive-context-heading">
+                    <h4 id="positive-context-heading">Positive indicators</h4>
+                    <div class="context-options">
+                      <label class="check-option"><input type="checkbox" name="context" value="strong-attendance"><span>Strong attendance</span></label>
+                      <label class="check-option"><input type="checkbox" name="context" value="strong-punctuality"><span>Strong punctuality</span></label>
+                      <label class="check-option"><input type="checkbox" name="context" value="improved-attendance"><span>Recently improved attendance</span></label>
+                      <label class="check-option"><input type="checkbox" name="context" value="improved-punctuality"><span>Recently improved punctuality</span></label>
+                      <label class="check-option"><input type="checkbox" name="context" value="strong-practical-performance"><span>Strong practical performance</span></label>
+                      <label class="check-option"><input type="checkbox" name="context" value="strong-written-performance"><span>Strong written performance</span></label>
+                      <label class="check-option"><input type="checkbox" name="context" value="placement"><span>Placement or work experience</span></label>
+                      <label class="check-option"><input type="checkbox" name="context" value="university"><span>Working towards university progression</span></label>
+                    </div>
+                  </section>
+                  <section class="context-group" aria-labelledby="support-context-heading">
+                    <h4 id="support-context-heading">Support and circumstances</h4>
+                    <div class="context-options">
+                      <label class="check-option"><input type="checkbox" name="context" value="medical-absence"><span>Medical appointments or health-related absence</span></label>
+                      <label class="check-option"><input type="checkbox" name="context" value="authorised-absence"><span>Authorised absence</span></label>
+                      <label class="check-option"><input type="checkbox" name="context" value="personal-circumstances"><span>Personal circumstances</span></label>
+                      <label class="check-option"><input type="checkbox" name="context" value="late-enrolment"><span>Late enrolment</span></label>
+                      <label class="check-option"><input type="checkbox" name="context" value="behaviour-intervention"><span>Behaviour intervention in place</span></label>
+                      <label class="check-option"><input type="checkbox" name="context" value="learning-support"><span>Learning support in place</span></label>
+                      <label class="check-option"><input type="checkbox" name="context" value="settling"><span>Difficulty settling into the course</span></label>
+                      <label class="check-option"><input type="checkbox" name="context" value="catch-up"><span>Missed work requiring catch-up</span></label>
+                      <label class="check-option"><input type="checkbox" name="context" value="maths-support"><span>Struggling with Maths</span></label>
+                      <label class="check-option"><input type="checkbox" name="context" value="english-support"><span>Struggling with English</span></label>
+                      <label class="check-option"><input type="checkbox" name="context" value="frequent-phone-use"><span>Frequent phone use during lessons</span></label>
+                      <label class="check-option"><input type="checkbox" name="context" value="other" data-other-toggle><span>Other</span></label>
+                    </div>
+                  </section>
                 </div>
                 <div class="field other-context-field" data-other-context-field hidden>
                   <label for="other-context">Please clarify the other context <span class="required" aria-hidden="true">*</span></label>

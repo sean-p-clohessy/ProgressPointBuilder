@@ -107,6 +107,14 @@
         "Frequent phone use during lessons is affecting their focus and reducing productive learning time."
       );
     }],
+    ["Additional progress contexts use controlled wording", () => {
+      const input = makeInput();
+      input.options.length = "detailed";
+      input.contextTypes = ["strong-attendance", "strong-punctuality", "maths-support", "english-support"];
+      const report = ParentReportEngine.generateReport(input).report;
+      return ["strong attendance", "strong punctuality", "finding Maths challenging", "finding English challenging"]
+        .every((text) => report.includes(text));
+    }],
     ["Detailed reports retain every selected context", () => {
       const input = makeInput();
       input.options.length = "detailed";
