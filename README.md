@@ -1,6 +1,6 @@
 # Progress Tracking Builder
 
-Progress Tracking Builder is a standalone, browser-based tool for lecturers drafting concise, professional progress-point comments for parents. It is designed to work locally, without AI, external APIs, accounts, analytics, or storage of learner information.
+Progress Tracking Builder is a standalone, browser-based tool for lecturers drafting concise, professional progress-point comments for parents. Report generation works locally, without AI, external APIs, accounts, or storage of learner information. The published site also loads an account-free visit counter.
 
 > Version 0.4.0 — Phase 4 report editor
 
@@ -21,6 +21,12 @@ Phase 4 provides a streamlined 90-second workflow and a complete report editor. 
 ### Mobile
 
 <img src="docs/images/parent-report-builder-mobile.png" width="390" alt="Progress Tracking Builder responsive mobile view">
+
+## Visits counter
+
+The published page displays a small Hits badge, with its own total at https://hits.sh/sean-p-clohessy.github.io/ProgressPointBuilder/. No account or API key is required. Tracking starts on 9 October 2026; prior traffic cannot be recovered. Totals are approximate: repeated loads, caching, blockers and bots affect the count.
+
+`visits.js` requests one fixed badge image per page load only on this project's published GitHub Pages address. It does not read learner fields, query strings, browser storage or generated content, and the image uses `referrerpolicy="no-referrer"`. Hits receives the normal network request (including the visitor's IP address). No third-party script is loaded. The badge stays hidden if unavailable, is excluded from printing, and local previews do not count. Do not poll it, since a new image request may increment the total.
 
 ## Run locally
 

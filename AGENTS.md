@@ -9,7 +9,7 @@ It is separate from the Target Builder project. Do not merge the two projects, i
 ## Core constraints
 
 1. Do not use an AI model.
-2. Do not call external APIs.
+2. Do not call external APIs for report generation. The user-authorised Hits footer badge is the sole external-request exception: use a fixed image URL with no referrer, learner data, or page query parameters.
 3. Do not add a backend.
 4. Do not store learner information.
 5. Report generation must be deterministic.
@@ -81,7 +81,7 @@ Do not place learner data in:
 
 Confirm:
 
-- no external requests;
+- no external requests except the user-authorised fixed Hits footer badge;
 - no AI dependencies;
 - no stored learner data;
 - no report contradictions;

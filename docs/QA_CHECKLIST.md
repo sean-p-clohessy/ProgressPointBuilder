@@ -25,6 +25,6 @@
 - [ ] Identical input and variation index give identical output.
 - [ ] Controlled regeneration changes wording without changing meaning.
 - [ ] Reports work offline.
-- [ ] No external requests, remote fonts, analytics, AI, or APIs exist.
+- [ ] No external requests except the fixed Hits visit badge; no learner information or page referrer is sent.
 - [ ] No learner data is written to browser storage or logs.
 - [ ] Spelling, grammar, punctuation, and rating alignment are checked.
